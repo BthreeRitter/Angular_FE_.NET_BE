@@ -1,0 +1,39 @@
+<!-- Search input fields -->
+<div>
+    <label>
+      Search by Name:
+      <input [(ngModel)]="searchName" (ngModelChange)="updateFilteredStudents()" placeholder="Search by name" />
+    </label>
+    <label>
+      Financial Aid Greater Than:
+      <input [(ngModel)]="searchFinancialAid" (ngModelChange)="updateFilteredStudents()" type="number" placeholder="Minimum Financial Aid" />
+    </label>
+  </div>
+  
+  <!-- Display filtered students in a table -->
+  <table class="students-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Financial Aid</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of filteredStudents">
+        <td>{{ student.name }}</td>
+        <td>{{ student.financialAid | currency }}</td>
+        <td>
+          <button (click)="openUpdateDialog(student)">Edit</button>
+          <button (click)="openDeleteDialog(student)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Add buttons for CRUD operations -->
+  <div class="button-container">
+    <button (click)="openCreateDialog()">Add Student</button>
+  </div>
+  
+  

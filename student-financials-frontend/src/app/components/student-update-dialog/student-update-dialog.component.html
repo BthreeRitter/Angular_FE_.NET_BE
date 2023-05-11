@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Update Student</h2>
+<mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="student.name" placeholder="Enter student name">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Financial Aid</mat-label>
+    <input matInput [(ngModel)]="student.financialAid" type="number" placeholder="Enter financial aid amount">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSave()">Save</button>
+</mat-dialog-actions>
