@@ -1,0 +1,65 @@
+/* General page styles */
+body {
+    background-color: var(--steel-gray);
+    color: var(--black);
+  }
+  
+  /* Search input fields */
+  .search-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    background-color: var(--iron-gray);
+    padding: 1em;
+    border-radius: 0.25em;
+  }
+  
+  .search-inputs label {
+    color: var(--carnegie-red);
+  }
+  
+  /* Students table */
+  .students-table {
+    width: 100%;
+    margin-bottom: 1em;
+  }
+  
+  .students-table th {
+    background-color: var(--carnegie-red);
+    color: white;
+  }
+  
+  .students-table td {
+    background-color: var(--iron-gray);
+    color: var(--black);
+  }
+  
+  /* CRUD operation buttons */
+  .button-container {
+    text-align: center;
+  }
+  
+  .button-container button {
+    color: white;
+    background-color: var(--carnegie-red);
+    border: none;
+    border-radius: 0.25em;
+    padding: 0.5em 1em;
+    margin: 1em;
+  }
+  
+  .button-container button:hover {
+    background-color: darken(var(--carnegie-red), 10%);
+  }
+  
+  /* Student row buttons */
+  .students-table .btn-warning {
+    background-color: var(--gold-thread);
+    color: var(--black);
+  }
+  
+  .students-table .btn-danger {
+    background-color: var(--scots-rose);
+    color: var(--black);
+  }
+  

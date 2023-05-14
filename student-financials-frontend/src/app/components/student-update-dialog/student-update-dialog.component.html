@@ -1,12 +1,28 @@
 <h2 mat-dialog-title>Update Student</h2>
 <mat-dialog-content>
-  <mat-form-field appearance="outline">
+  <mat-form-field style="padding-top: 15px;" appearance="outline">
     <mat-label>Name</mat-label>
     <input matInput [(ngModel)]="student.name" placeholder="Enter student name">
   </mat-form-field>
   <mat-form-field appearance="outline">
+    <mat-label>Balance</mat-label>
+    <input matInput [(ngModel)]="student.balance" type="number" placeholder="Enter balance amount">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
     <mat-label>Financial Aid</mat-label>
     <input matInput [(ngModel)]="student.financialAid" type="number" placeholder="Enter financial aid amount">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Tuition</mat-label>
+    <input matInput [(ngModel)]="student.tuition" type="number" placeholder="Enter tuition amount">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Fees</mat-label>
+    <input matInput [(ngModel)]="student.fees" type="number" placeholder="Enter fees amount">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Scholarships</mat-label>
+    <input matInput [(ngModel)]="student.scholarships" type="number" placeholder="Enter scholarships amount">
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>

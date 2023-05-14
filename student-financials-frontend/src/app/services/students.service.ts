@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Student } from '../models/student.model';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -12,10 +13,13 @@ export class StudentsService {
   constructor(private http: HttpClient) { }
 
   private apiUrl = 'https://localhost:7034/api/Students'; // Replace with the correct URL
+  private _students = new BehaviorSubject<Student[]>([]);
+  readonly students$ = this._students.asObservable();
 
 getAllStudents(): Observable<Student[]> {
   return this.http.get<Student[]>(this.apiUrl);
 }
+
 
 getStudent(id: number): Observable<Student> {
   return this.http.get<Student>(`${this.apiUrl}/${id}`);

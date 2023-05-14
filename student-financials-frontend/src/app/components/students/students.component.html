@@ -1,39 +1,88 @@
-<!-- Search input fields -->
-<div>
-    <label>
-      Search by Name:
-      <input [(ngModel)]="searchName" (ngModelChange)="updateFilteredStudents()" placeholder="Search by name" />
-    </label>
-    <label>
-      Financial Aid Greater Than:
-      <input [(ngModel)]="searchFinancialAid" (ngModelChange)="updateFilteredStudents()" type="number" placeholder="Minimum Financial Aid" />
-    </label>
+<div class="container mt-5">
+  <!-- Include CMU logo -->
+  <div class="text-center mb-5">
+    <img src="assets/logo.png" alt="Logo" class="img-fluid">
   </div>
-  
+
+  <!-- Search input fields -->
+  <div class="card mb-4 p-4 bg-light">
+    <div class="row">
+      <div class="col-md-3">
+        <label>
+          Search by Name:
+          <input [(ngModel)]="searchName" (ngModelChange)="updateFilteredStudents()" placeholder="Search by name" class="form-control" />
+        </label>
+      </div>
+      <div class="col-md-3">
+        <label>
+          Financial Value:
+          <input [(ngModel)]="searchFinancialValue" (ngModelChange)="updateFilteredStudents()" type="number" placeholder="Search value" class="form-control" />
+        </label>
+      </div>
+      <div class="col-md-3">
+        <label>
+          Financial Field:
+          <select [(ngModel)]="searchFinancialField" (ngModelChange)="updateFilteredStudents()" class="form-control">
+            <option value="balance">Balance</option>
+            <option value="financialAid">Financial Aid</option>
+            <option value="tuition">Tuition</option>
+            <option value="fees">Fees</option>
+            <option value="scholarships">Scholarships</option>
+          </select>
+        </label>
+      </div>
+      <div class="col-md-3">
+        <label>
+          Comparison Operator:
+          <div class="form-check">
+            <input type="radio" [(ngModel)]="searchComparisonOperator" (ngModelChange)="updateFilteredStudents()" value="<" class="form-check-input" /> Less Than
+          </div>
+          <div class="form-check">
+            <input type="radio" [(ngModel)]="searchComparisonOperator" (ngModelChange)="updateFilteredStudents()" value="=" class="form-check-input" /> Equal To
+          </div>
+          <div class="form-check">
+            <input type="radio" [(ngModel)]="searchComparisonOperator" (ngModelChange)="updateFilteredStudents()" value=">" class="form-check-input" /> Greater Than
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+
   <!-- Display filtered students in a table -->
-  <table class="students-table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Financial Aid</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let student of filteredStudents">
-        <td>{{ student.name }}</td>
-        <td>{{ student.financialAid | currency }}</td>
-        <td>
-          <button (click)="openUpdateDialog(student)">Edit</button>
-          <button (click)="openDeleteDialog(student)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
+  <table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Balance</th>
+      <th>Financial Aid</th>
+      <th>Tuition</th>
+      <th>Fees</th>
+      <th>Scholarships</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of filteredStudents">
+      <td>{{ student.id }}</td>
+      <td>{{ student.name }}</td>
+      <td>{{ student.balance | currency }}</td>
+      <td>{{ student.financialAid | currency }}</td>
+      <td>{{ student.tuition | currency }}</td>
+      <td>{{ student.fees | currency }}</td>
+      <td>{{ student.scholarships | currency }}</td>
+      <td>
+        <button (click)="openUpdateDialog(student)" class="btn btn-warning me-2">Edit</button>
+        <button (click)="openDeleteDialog(student)" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
   </table>
   
   <!-- Add buttons for CRUD operations -->
-  <div class="button-container">
-    <button (click)="openCreateDialog()">Add Student</button>
+  <div class="text-center">
+    <button style="margin-bottom: 200px;" (click)="openCreateDialog()" class="btn btn-primary">Add Student</button>
+  </div>
   </div>
   
-  
+       

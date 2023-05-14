@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Student } from 'src/app/models/student.model';
+import { StudentsService } from 'src/app/services/students.service';
 
 @Component({
   selector: 'app-student-update-dialog',
@@ -12,7 +13,8 @@ export class StudentUpdateDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<StudentUpdateDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Student
+    @Inject(MAT_DIALOG_DATA) public data: Student,
+    private studentsService: StudentsService  // Add this
   ) {
     this.student = { ...data };
   }
@@ -22,6 +24,14 @@ export class StudentUpdateDialogComponent {
   }
 
   onSave(): void {
-    this.dialogRef.close(this.student);
+    this.studentsService.updateStudent(this.data.id, this.student as Student).subscribe(
+      () => {
+        this.dialogRef.close(this.student);
+      },
+      error => {
+        console.error('Error updating student:', error);
+      }
+    );
   }
+  
 }

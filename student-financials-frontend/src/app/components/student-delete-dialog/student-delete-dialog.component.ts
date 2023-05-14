@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Student } from 'src/app/models/student.model';
 
+
 @Component({
   selector: 'app-student-delete-dialog',
   templateUrl: './student-delete-dialog.component.html',

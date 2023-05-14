@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Student } from 'src/app/models/student.model';
 
-
 @Component({
   selector: 'app-student-create-dialog',
   templateUrl: './student-create-dialog.component.html',
@@ -21,3 +20,4 @@ export class StudentCreateDialogComponent {
     this.dialogRef.close(this.student);
   }
 }
+
